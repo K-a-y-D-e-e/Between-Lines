@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: #f5f3ee;
+    color: #1c1c1c;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply min-h-screen bg-paper font-sans text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid #6b3f45;
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: rgb(107 63 69 / 0.18);
+  }
+}
+
+@layer components {
+  .poem {
+    @apply whitespace-pre-wrap break-words font-serif text-[1.2rem] leading-[1.95] sm:text-[1.35rem];
+  }
+  .label {
+    @apply text-[0.72rem] uppercase tracking-[0.14em] text-muted;
+  }
+  .btn {
+    @apply border border-line px-4 py-2 text-sm transition hover:border-ink disabled:opacity-60;
+  }
+  .btn-solid {
+    @apply border-ink bg-ink text-paper hover:bg-accent hover:border-accent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
