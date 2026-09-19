@@ -11,11 +11,20 @@ export async function createClient() {
         getAll() {
           return store.getAll();
         },
-        setAll(list) {
+        setAll(
+          list: {
+            name: string;
+            value: string;
+            options?: Parameters<typeof store.set>[2];
+          }[]
+        ) {
           try {
-            list.forEach(({ name, value, options }) => store.set(name, value, options));
+            list.forEach(({ name, value, options }) =>
+              store.set(name, value, options)
+            );
           } catch {
-            // Called from a Server Component; middleware refreshes the session.
+            // The `setAll` method was called from a Server Component.
+            // This can be ignored because middleware will refresh the session.
           }
         },
       },
